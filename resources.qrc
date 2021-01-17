@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>icons/gear.ico</file>
+        <file>icons/scheduled_tasks_icon.ico</file>
+    </qresource>
+</RCC>

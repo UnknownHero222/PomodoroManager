@@ -19,6 +19,10 @@
   <property name="windowTitle">
    <string>Pomodoro Manager</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/icons/icons/scheduled_tasks_icon.ico</normaloff>:/icons/icons/scheduled_tasks_icon.ico</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
@@ -67,8 +71,18 @@
      <property name="text">
       <string/>
      </property>
+     <property name="icon">
+      <iconset resource="resources.qrc">
+       <normaloff>:/icons/icons/gear.ico</normaloff>:/icons/icons/gear.ico</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>80</x>
@@ -123,6 +137,8 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
