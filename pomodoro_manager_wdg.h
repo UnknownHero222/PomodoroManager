@@ -2,20 +2,33 @@
 #define POMODOROMANAGERWDG_H
 
 #include <QMainWindow>
+#include <QTimer>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class PomodoroManagerWdg; }
+namespace Ui {
+class PomodoroManagerWdg;
+}
 QT_END_NAMESPACE
 
-class PomodoroManagerWdg : public QMainWindow
-{
-    Q_OBJECT
+class PomodoroManagerWdg : public QMainWindow {
+  Q_OBJECT
 
-public:
-    PomodoroManagerWdg(QWidget *parent = nullptr);
-    ~PomodoroManagerWdg();
+ public:
+  PomodoroManagerWdg(QWidget *parent = nullptr);
+  ~PomodoroManagerWdg();
 
-private:
-    Ui::PomodoroManagerWdg *ui;
+ private slots:
+  void on_start_btn_clicked();
+
+  void on_stop_btn_clicked();
+
+ private:
+  void launch();
+  void stop();
+
+ private:
+  Ui::PomodoroManagerWdg *ui;
+
+  std::unique_ptr<QTimer> timer_;
 };
-#endif // POMODOROMANAGERWDG_H
+#endif  // POMODOROMANAGERWDG_H
