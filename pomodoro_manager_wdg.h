@@ -23,12 +23,13 @@ class PomodoroManagerWdg : public QMainWindow {
   void on_stop_btn_clicked();
 
  private:
-  void launch();
-  void stop();
+  void update_timer_status();
 
  private:
   Ui::PomodoroManagerWdg *ui;
 
   std::unique_ptr<QTimer> timer_;
+
+  uint8_t curr_mode_;
 };
 #endif  // POMODOROMANAGERWDG_H
