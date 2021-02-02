@@ -1,5 +1,7 @@
 #include "pomodoro_manager_wdg.h"
 
+#include <QTime>
+
 #include "./ui_pomodoro_manager_wdg.h"
 
 static constexpr int kOneMillisecond = 1000;
@@ -31,18 +33,17 @@ PomodoroManagerWdg::~PomodoroManagerWdg() { delete ui; }
 /************************************************************************/
 
 void PomodoroManagerWdg::on_start_btn_clicked() {
-  uint64_t remaining_msecs{0};
   switch (curr_mode_) {
     case kWorkMode:
-      remaining_msecs = kDefaultWorkMinute;
+      remaining_msecs_ = kDefaultWorkMinute;
       curr_mode_ = kShortBreakMode;
       break;
     case kShortBreakMode:
-      remaining_msecs = kWorkMode;
+      remaining_msecs_ = kWorkMode;
       curr_mode_ = kShortBreakMode;
       break;
     case kLongBreakMode:
-      remaining_msecs = kDefaultLongBreakMinute;
+      remaining_msecs_ = kDefaultLongBreakMinute;
       break;
   }
   timer_->start(kOneMillisecond);
@@ -50,6 +51,25 @@ void PomodoroManagerWdg::on_start_btn_clicked() {
 
 /************************************************************************/
 
-void PomodoroManagerWdg::update_timer_status() {}
+void PomodoroManagerWdg::on_stop_btn_clicked() { timer_->stop(); }
+
+/************************************************************************/
+
+void PomodoroManagerWdg::update_timer_status() {
+  remaining_msecs_--;
+  update_remaining_time_status();
+}
+
+/************************************************************************/
+
+void PomodoroManagerWdg::update_remaining_time_status() {
+  QTime zero_time(0, 0, 0);
+  QTime process_time = zero_time.addMSecs(remaining_msecs_);
+
+  auto remaining_time_text =
+      process_time.toString("mm") + ":" + process_time.toString("ss");
+
+  ui->timer_label->setText(remaining_time_text);
+}
 
 /************************************************************************/
