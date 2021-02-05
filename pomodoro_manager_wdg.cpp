@@ -46,18 +46,18 @@ void PomodoroManagerWdg::on_stop_btn_clicked() {
 /************************************************************************/
 
 void PomodoroManagerWdg::launch() {
-  int minute_millisecs = kSecondsInMinute * kOneMillisecond;
+  uint8_t minute_secs = 60;
   switch (curr_mode_) {
     case kWorkMode:
-      remaining_msecs_ = kDefaultWorkMinute * 60;
+      remaining_msecs_ = kDefaultWorkMinute * minute_secs;
       curr_mode_ = kShortBreakMode;
       break;
     case kShortBreakMode:
-      remaining_msecs_ = kDefaultShortBreakMinute * 60;
+      remaining_msecs_ = kDefaultShortBreakMinute * minute_secs;
       curr_mode_ = kShortBreakMode;
       break;
     case kLongBreakMode:
-      remaining_msecs_ = kDefaultLongBreakMinute * 60;
+      remaining_msecs_ = kDefaultLongBreakMinute * minute_secs;
       break;
   }
   timer_->start(kOneMillisecond);
