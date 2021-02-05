@@ -56,7 +56,7 @@ void PomodoroManagerWdg::launch() {
       break;
     case kShortBreakMode:
       remaining_msecs_ = kDefaultShortBreakMinute * minute_secs;
-      curr_mode_ = kShortBreakMode;
+      curr_mode_ = kWorkMode;
       break;
     case kLongBreakMode:
       remaining_msecs_ = kDefaultLongBreakMinute * minute_secs;
@@ -93,7 +93,16 @@ void PomodoroManagerWdg::update_remaining_time_status() {
 
 void PomodoroManagerWdg::show_notification() {
   auto notification_wnd = NotificationWindow(this);
-  notification_wnd.set_notification_text("It's time to take a break!");
+
+  QPixmap curr_icon = curr_mode_ == kWorkMode
+                          ? QPixmap(":/icons/icons/work.ico")
+                          : QPixmap(":/icons/icons/short_break.ico");
+
+  std::string curr_text = curr_mode_ == kWorkMode
+                              ? "It's time to work hard!"
+                              : "It's time to take a break!";
+
+  notification_wnd.set_notification_info(curr_icon, curr_text);
   notification_wnd.exec();
 }
 

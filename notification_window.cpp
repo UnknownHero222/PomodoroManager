@@ -25,8 +25,10 @@ NotificationWindow::~NotificationWindow() { delete ui; }
 
 /************************************************************************/
 
-void NotificationWindow::set_notification_text(const std::string &text) {
+void NotificationWindow::set_notification_info(const QPixmap &icon,
+                                               const std::string &text) {
   ui->info_lbl->setText(text.c_str());
+  ui->icon_lbl->setPixmap(icon);
 }
 
 /************************************************************************/

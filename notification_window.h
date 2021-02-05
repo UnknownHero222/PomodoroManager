@@ -2,6 +2,7 @@
 #define NOTIFICATION_WINDOW_H
 
 #include <QDialog>
+#include <QPixmap>
 #include <QTimer>
 
 namespace Ui {
@@ -15,7 +16,7 @@ class NotificationWindow : public QDialog {
   explicit NotificationWindow(QWidget *parent = nullptr);
   ~NotificationWindow();
 
-  void set_notification_text(const std::string &text);
+  void set_notification_info(const QPixmap &icon, const std::string &text);
 
  private slots:
   void on_pushButton_clicked();
