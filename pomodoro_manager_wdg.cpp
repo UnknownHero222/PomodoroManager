@@ -42,6 +42,7 @@ void PomodoroManagerWdg::on_start_btn_clicked() { launch(); }
 void PomodoroManagerWdg::on_stop_btn_clicked() {
   timer_->stop();
   ui->timer_label->setText("25:00");
+  curr_mode_ = kWorkMode;
 }
 
 /************************************************************************/
