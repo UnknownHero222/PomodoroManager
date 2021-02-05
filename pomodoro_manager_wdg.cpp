@@ -50,7 +50,7 @@ void PomodoroManagerWdg::launch() {
   uint8_t minute_secs = 60;
   switch (curr_mode_) {
     case kWorkMode:
-      remaining_msecs_ = 1 * minute_secs;
+      remaining_msecs_ = kDefaultWorkMinute * minute_secs;
       curr_mode_ = kShortBreakMode;
       break;
     case kShortBreakMode:
