@@ -3,5 +3,6 @@
         <file>icons/gear.ico</file>
         <file>icons/scheduled_tasks_icon.ico</file>
         <file>icons/short_break.ico</file>
+        <file>icons/work.ico</file>
     </qresource>
 </RCC>
