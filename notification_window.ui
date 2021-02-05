@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>404</width>
+    <width>438</width>
     <height>164</height>
    </rect>
   </property>
@@ -40,7 +40,7 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>300</x>
+     <x>330</x>
      <y>130</y>
      <width>101</width>
      <height>31</height>
@@ -64,6 +64,19 @@
    </property>
    <property name="pixmap">
     <pixmap resource="resources.qrc">:/icons/icons/short_break.ico</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="live_st_lbl">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>100</y>
+     <width>261</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>

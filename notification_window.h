@@ -2,6 +2,7 @@
 #define NOTIFICATION_WINDOW_H
 
 #include <QDialog>
+#include <QTimer>
 
 namespace Ui {
 class NotificationWindow;
@@ -20,7 +21,14 @@ class NotificationWindow : public QDialog {
   void on_pushButton_clicked();
 
  private:
+  void update_live_status();
+
+ private:
   Ui::NotificationWindow *ui;
+
+  std::unique_ptr<QTimer> live_timer_;
+
+  uint8_t live_time_counter_;
 };
 
 #endif  // NOTIFICATION_WINDOW_H
