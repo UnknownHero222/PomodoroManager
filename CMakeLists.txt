@@ -21,6 +21,9 @@ add_executable(PomodoroManager
     pomodoro_manager_wdg.cpp
     pomodoro_manager_wdg.h
     pomodoro_manager_wdg.ui
+    notification_window.ui
+    notification_window.h
+    notification_window.cpp
     resources.qrc
 )
 
