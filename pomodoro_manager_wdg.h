@@ -22,6 +22,8 @@ class PomodoroManagerWdg : public QMainWindow {
   void on_stop_btn_clicked();
 
  private:
+  void launch();
+
   void update_timer_status();
   void update_remaining_time_status();
 
