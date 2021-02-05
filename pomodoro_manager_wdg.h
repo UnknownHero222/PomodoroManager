@@ -35,6 +35,6 @@ class PomodoroManagerWdg : public QMainWindow {
   std::unique_ptr<QTimer> timer_;
 
   uint8_t curr_mode_;
-  uint64_t remaining_msecs_;
+  uint64_t remaining_secs_;
 };
 #endif  // POMODOROMANAGERWDG_H

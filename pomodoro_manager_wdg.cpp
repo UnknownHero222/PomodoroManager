@@ -51,15 +51,15 @@ void PomodoroManagerWdg::launch() {
   uint8_t minute_secs = 60;
   switch (curr_mode_) {
     case kWorkMode:
-      remaining_msecs_ = kDefaultWorkMinute * minute_secs;
+      remaining_secs_ = kDefaultWorkMinute * minute_secs;
       curr_mode_ = kShortBreakMode;
       break;
     case kShortBreakMode:
-      remaining_msecs_ = kDefaultShortBreakMinute * minute_secs;
+      remaining_secs_ = kDefaultShortBreakMinute * minute_secs;
       curr_mode_ = kWorkMode;
       break;
     case kLongBreakMode:
-      remaining_msecs_ = kDefaultLongBreakMinute * minute_secs;
+      remaining_secs_ = kDefaultLongBreakMinute * minute_secs;
       break;
   }
   timer_->start(kOneMillisecond);
@@ -68,10 +68,10 @@ void PomodoroManagerWdg::launch() {
 /************************************************************************/
 
 void PomodoroManagerWdg::update_timer_status() {
-  remaining_msecs_--;
+  remaining_secs_--;
   update_remaining_time_status();
 
-  if (remaining_msecs_ == 0) {
+  if (remaining_secs_ == 0) {
     show_notification();
     launch();
   }
@@ -81,7 +81,7 @@ void PomodoroManagerWdg::update_timer_status() {
 
 void PomodoroManagerWdg::update_remaining_time_status() {
   QTime zero_time(0, 0, 0);
-  QTime process_time = zero_time.addSecs(remaining_msecs_);
+  QTime process_time = zero_time.addSecs(remaining_secs_);
 
   QString remaining_time_text =
       process_time.toString("mm") + ":" + process_time.toString("ss");
