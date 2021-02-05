@@ -3,6 +3,7 @@
 #include <QTime>
 
 #include "./ui_pomodoro_manager_wdg.h"
+#include "notification_window.h"
 
 static constexpr int kOneMillisecond = 1000;
 static constexpr int kSecondsInMinute = 60;
@@ -49,7 +50,7 @@ void PomodoroManagerWdg::launch() {
   uint8_t minute_secs = 60;
   switch (curr_mode_) {
     case kWorkMode:
-      remaining_msecs_ = kDefaultWorkMinute * minute_secs;
+      remaining_msecs_ = 1 * minute_secs;
       curr_mode_ = kShortBreakMode;
       break;
     case kShortBreakMode:
@@ -70,6 +71,7 @@ void PomodoroManagerWdg::update_timer_status() {
   update_remaining_time_status();
 
   if (remaining_msecs_ == 0) {
+    show_notification();
     launch();
   }
 }
@@ -84,6 +86,14 @@ void PomodoroManagerWdg::update_remaining_time_status() {
       process_time.toString("mm") + ":" + process_time.toString("ss");
 
   ui->timer_label->setText(remaining_time_text);
+}
+
+/************************************************************************/
+
+void PomodoroManagerWdg::show_notification() {
+  auto notification_wnd = NotificationWindow(this);
+  notification_wnd.set_notification_text("It's time to take a break!");
+  notification_wnd.exec();
 }
 
 /************************************************************************/

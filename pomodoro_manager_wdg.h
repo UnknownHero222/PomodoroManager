@@ -27,6 +27,8 @@ class PomodoroManagerWdg : public QMainWindow {
   void update_timer_status();
   void update_remaining_time_status();
 
+  void show_notification();
+
  private:
   Ui::PomodoroManagerWdg *ui;
 

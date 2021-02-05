@@ -7,16 +7,20 @@ namespace Ui {
 class NotificationWindow;
 }
 
-class NotificationWindow : public QDialog
-{
-    Q_OBJECT
+class NotificationWindow : public QDialog {
+  Q_OBJECT
 
-public:
-    explicit NotificationWindow(QWidget *parent = nullptr);
-    ~NotificationWindow();
+ public:
+  explicit NotificationWindow(QWidget *parent = nullptr);
+  ~NotificationWindow();
 
-private:
-    Ui::NotificationWindow *ui;
+  void set_notification_text(const std::string &text);
+
+ private slots:
+  void on_pushButton_clicked();
+
+ private:
+  Ui::NotificationWindow *ui;
 };
 
-#endif // NOTIFICATION_WINDOW_H
+#endif  // NOTIFICATION_WINDOW_H
